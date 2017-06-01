@@ -1,0 +1,26 @@
+version '1.0'
+apply plugin: 'java'
+apply plugin: 'com.esri.arcgisruntime.java'
+apply plugin: 'application'
+apply plugin: 'eclipse'
+buildscript {
+    repositories {
+        maven {
+            url 'https://esri.bintray.com/arcgis'
+        }
+    }
+    dependencies {
+        // arcgis-java gradle plugin
+        classpath 'com.esri.arcgisruntime:gradle-arcgis-java-plugin:1.0.0'
+    }
+}
+// required: version of arcgis java sdk
+arcgis.version = '100.0.0'
+run {
+    mainClassName = "demoApp.MyMapApp"
+}
+// the gradle wrapper allows you to run a Gradle task without
+// requiring Gradle to be installed on your system.
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.0'
+}
